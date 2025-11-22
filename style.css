@@ -48,23 +48,6 @@ body {
 }
 
 .display-text {
-  font-size: 5rem;
-  font-weight: 300;
-  line-height: 1;
-  transition: font-size 0.1s ease;
-}
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  /* 10 columns for scientific */
-  gap: var(--gap);
-}
-
-.btn {
-  width: 100%;
-  aspect-ratio: 1.2;
-  /* Slightly wider than tall */
   border-radius: 40px;
   /* Pill shape */
   border: none;
@@ -118,34 +101,159 @@ body {
 
 .btn-gray:active {
   filter: brightness(1.3);
-}
 
-.btn-orange:active {
-  filter: brightness(0.8);
-}
-
-/* Responsive adjustments */
-@media (max-width: 800px) {
-  .keypad {
-    grid-template-columns: repeat(4, 1fr);
+  :root {
+    --bg-color: #000000;
+    --btn-dark: #333333;
+    --btn-gray: #a5a5a5;
+    --btn-orange: #ff9f0a;
+    --text-white: #ffffff;
+    --text-black: #000000;
+    --gap: 12px;
+    --btn-size: 80px;
   }
 
-  .secondary {
-    display: none;
-    /* Hide scientific keys on small screens for now, or we could stack them */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-white);
   }
 
   #app {
-    max-width: 400px;
+    width: 100%;
+    max-width: 900px;
+    /* Increased for scientific layout */
+    padding: 20px;
   }
 
-  .btn {
-    aspect-ratio: 1;
-    border-radius: 50%;
-    font-size: 2rem;
+  .calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .display {
+    height: 120px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 20px;
+    overflow: hidden;
+  }
+
+  .display-text {
+    border-radius: 40px;
+    /* Pill shape */
+    border: none;
+    font-size: 1.2rem;
+    /* Smaller font for scientific */
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-dark {
+    background-color: var(--btn-dark);
+    color: var(--text-white);
+  }
+
+  .btn-dark.secondary {
+    background-color: #212121;
+    /* Slightly darker for scientific keys */
+    font-size: 1rem;
+  }
+
+  .btn-gray {
+    background-color: var(--btn-gray);
+    color: var(--text-black);
+  }
+
+  .btn-orange {
+    background-color: var(--btn-orange);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    padding-bottom: 3px;
   }
 
   .btn-zero {
+    grid-column: span 2;
+    aspect-ratio: auto;
     border-radius: 40px;
+    justify-content: flex-start;
+    padding-left: 30px;
   }
-}
+
+  /* Active States */
+  .btn:active {
+    filter: brightness(1.3);
+  }
+
+  .btn-gray:active {
+    filter: brightness(1.3);
+  }
+
+  .btn-orange:active {
+    filter: brightness(0.8);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 800px) {
+    .keypad {
+      grid-template-columns: repeat(4, 1fr) !important;
+      /* Force 4 columns on mobile */
+    }
+
+    .keypad.scientific-mode {
+      grid-template-columns: repeat(4, 1fr) !important;
+      /* Keep 4 columns even in scientific mode on mobile, maybe stack? */
+      /* Or maybe we want a different mobile scientific layout? 
+       For now, let's just hide scientific keys on mobile to match "mobile structure" request 
+       or make them accessible via a different view. 
+       The user asked "where the mobile calculator structure", implying it's missing or broken.
+       Let's ensure the basic mobile view is perfect.
+    */
+    }
+
+    .scientific-key,
+    .scientific-keys button {
+      display: none !important;
+      /* Hide scientific keys on small screens by default */
+    }
+
+    /* If we want scientific on mobile, we'd need a landscape rotation or a swap. 
+     For now, let's ensure the basic calculator works perfectly on mobile. */
+
+    #app {
+      max-width: 400px !important;
+    }
+
+    .btn {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      font-size: 2rem;
+    }
+
+    .btn-zero {
+      border-radius: 40px;
+    }
+
+    #toggle-scientific {
+      display: none;
+      /* Hide toggle on mobile if we only want basic there, or keep it if we implement mobile scientific */
+    }
+  }

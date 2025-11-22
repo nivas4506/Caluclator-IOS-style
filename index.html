@@ -15,62 +15,73 @@
       <div class="display">
         <span class="display-text">0</span>
       </div>
-      <div class="keypad scientific-grid">
-        <!-- Row 1 -->
-        <button class="btn btn-dark secondary" data-action="open-parenthesis">(</button>
-        <button class="btn btn-dark secondary" data-action="close-parenthesis">)</button>
-        <button class="btn btn-dark secondary" data-action="memory-clear">mc</button>
-        <button class="btn btn-dark secondary" data-action="memory-add">m+</button>
-        <button class="btn btn-dark secondary" data-action="memory-minus">m-</button>
-        <button class="btn btn-dark secondary" data-action="memory-recall">mr</button>
+      <div class="keypad">
+        <!-- Scientific Toggle / Logo -->
+        <button class="btn btn-dark" id="toggle-scientific" style="grid-column: span 1; font-size: 1.5rem;">
+          🧮
+        </button>
+
+        <!-- Scientific Keys (Initially Hidden) -->
+        <div class="scientific-keys" style="display: none; contents;">
+          <!-- Row 1 -->
+          <button class="btn btn-dark secondary" data-action="open-parenthesis">(</button>
+          <button class="btn btn-dark secondary" data-action="close-parenthesis">)</button>
+          <button class="btn btn-dark secondary" data-action="memory-clear">mc</button>
+          <button class="btn btn-dark secondary" data-action="memory-add">m+</button>
+          <button class="btn btn-dark secondary" data-action="memory-minus">m-</button>
+          <button class="btn btn-dark secondary" data-action="memory-recall">mr</button>
+        </div>
+
+        <!-- Basic Keys -->
         <button class="btn btn-gray" data-action="clear">AC</button>
         <button class="btn btn-gray" data-action="sign">+/-</button>
         <button class="btn btn-gray" data-action="percent">%</button>
         <button class="btn btn-orange" data-action="operator" data-value="/">÷</button>
 
         <!-- Row 2 -->
-        <button class="btn btn-dark secondary" data-action="second">2nd</button>
-        <button class="btn btn-dark secondary" data-action="square">x²</button>
-        <button class="btn btn-dark secondary" data-action="cube">x³</button>
-        <button class="btn btn-dark secondary" data-action="power">xʸ</button>
-        <button class="btn btn-dark secondary" data-action="exp">eˣ</button>
-        <button class="btn btn-dark secondary" data-action="ten-power">10ˣ</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="second" style="display: none;">2nd</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="square" style="display: none;">x²</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="cube" style="display: none;">x³</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="power" style="display: none;">xʸ</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="exp" style="display: none;">eˣ</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="ten-power"
+          style="display: none;">10ˣ</button>
         <button class="btn btn-dark" data-number>7</button>
         <button class="btn btn-dark" data-number>8</button>
         <button class="btn btn-dark" data-number>9</button>
         <button class="btn btn-orange" data-action="operator" data-value="*">×</button>
 
         <!-- Row 3 -->
-        <button class="btn btn-dark secondary" data-action="inverse">1/x</button>
-        <button class="btn btn-dark secondary" data-action="sqrt">²√x</button>
-        <button class="btn btn-dark secondary" data-action="cbrt">³√x</button>
-        <button class="btn btn-dark secondary" data-action="root">ʸ√x</button>
-        <button class="btn btn-dark secondary" data-action="ln">ln</button>
-        <button class="btn btn-dark secondary" data-action="log">log₁₀</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="inverse" style="display: none;">1/x</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="sqrt" style="display: none;">²√x</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="cbrt" style="display: none;">³√x</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="root" style="display: none;">ʸ√x</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="ln" style="display: none;">ln</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="log" style="display: none;">log₁₀</button>
         <button class="btn btn-dark" data-number>4</button>
         <button class="btn btn-dark" data-number>5</button>
         <button class="btn btn-dark" data-number>6</button>
         <button class="btn btn-orange" data-action="operator" data-value="-">−</button>
 
         <!-- Row 4 -->
-        <button class="btn btn-dark secondary" data-action="factorial">x!</button>
-        <button class="btn btn-dark secondary" data-action="sin">sin</button>
-        <button class="btn btn-dark secondary" data-action="cos">cos</button>
-        <button class="btn btn-dark secondary" data-action="tan">tan</button>
-        <button class="btn btn-dark secondary" data-action="e">e</button>
-        <button class="btn btn-dark secondary" data-action="ee">EE</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="factorial" style="display: none;">x!</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="sin" style="display: none;">sin</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="cos" style="display: none;">cos</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="tan" style="display: none;">tan</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="e" style="display: none;">e</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="ee" style="display: none;">EE</button>
         <button class="btn btn-dark" data-number>1</button>
         <button class="btn btn-dark" data-number>2</button>
         <button class="btn btn-dark" data-number>3</button>
         <button class="btn btn-orange" data-action="operator" data-value="+">+</button>
 
         <!-- Row 5 -->
-        <button class="btn btn-dark secondary" data-action="rad">Rad</button>
-        <button class="btn btn-dark secondary" data-action="sinh">sinh</button>
-        <button class="btn btn-dark secondary" data-action="cosh">cosh</button>
-        <button class="btn btn-dark secondary" data-action="tanh">tanh</button>
-        <button class="btn btn-dark secondary" data-action="pi">π</button>
-        <button class="btn btn-dark secondary" data-action="rand">Rand</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="rad" style="display: none;">Rad</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="sinh" style="display: none;">sinh</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="cosh" style="display: none;">cosh</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="tanh" style="display: none;">tanh</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="pi" style="display: none;">π</button>
+        <button class="btn btn-dark secondary scientific-key" data-action="rand" style="display: none;">Rand</button>
         <button class="btn btn-dark btn-zero" data-number>0</button>
         <button class="btn btn-dark" data-action="decimal">.</button>
         <button class="btn btn-orange" data-action="calculate">=</button>
