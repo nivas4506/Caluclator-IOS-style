@@ -2,7 +2,7 @@
 
 A modern, responsive scientific calculator web application inspired by the iOS calculator design. Built with Vanilla JavaScript, HTML, and CSS, utilizing Vite for development.
 
-![Calculator Preview](./screenshot.png) *Note: Add a screenshot of your app here if available*
+![Calculator Preview](./screenshot.png)
 
 ## 🌟 Features
 
