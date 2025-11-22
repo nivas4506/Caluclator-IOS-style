@@ -338,6 +338,23 @@ decimalButton.addEventListener('click', () => {
     updateClearButton();
 });
 
+const toggleButton = document.getElementById('toggle-scientific');
+const keypad = document.querySelector('.keypad');
+const app = document.getElementById('app');
+const sciKeys = document.querySelectorAll('.secondary');
+
+toggleButton.addEventListener('click', () => {
+    const isScientific = keypad.classList.toggle('scientific-mode');
+
+    if (isScientific) {
+        app.style.maxWidth = '900px';
+        sciKeys.forEach(key => key.style.display = 'flex');
+    } else {
+        app.style.maxWidth = '400px';
+        sciKeys.forEach(key => key.style.display = 'none');
+    }
+});
+
 function updateClearButton() {
     if (calculator.currentOperand !== '0') {
         clearButton.innerText = 'C';

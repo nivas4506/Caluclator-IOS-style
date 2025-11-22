@@ -27,9 +27,31 @@ body {
 
 #app {
   width: 100%;
-  max-width: 900px;
-  /* Increased for scientific layout */
+  max-width: 400px;
+  /* Default to basic mode width */
   padding: 20px;
+  transition: max-width 0.3s ease;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-white);
+}
+
+.nav-title {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .calculator {
@@ -48,28 +70,30 @@ body {
 }
 
 .display-text {
+  color: var(--text-white);
   font-size: 5rem;
   font-weight: 300;
   line-height: 1;
-  transition: font-size 0.1s ease;
+  word-break: break-all;
+  text-align: right;
 }
 
 .keypad {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  /* 10 columns for scientific */
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
+}
+
+.keypad.scientific-mode {
+  grid-template-columns: repeat(10, 1fr);
 }
 
 .btn {
   width: 100%;
-  aspect-ratio: 1.2;
-  /* Slightly wider than tall */
-  border-radius: 40px;
-  /* Pill shape */
+  aspect-ratio: 1;
+  border-radius: 50%;
   border: none;
-  font-size: 1.2rem;
-  /* Smaller font for scientific */
+  font-size: 1.7rem;
   font-weight: 500;
   cursor: pointer;
   transition: filter 0.2s;
@@ -87,8 +111,9 @@ body {
 
 .btn-dark.secondary {
   background-color: #212121;
-  /* Slightly darker for scientific keys */
   font-size: 1rem;
+  display: none;
+  /* Hidden by default */
 }
 
 .btn-gray {
@@ -127,25 +152,20 @@ body {
 /* Responsive adjustments */
 @media (max-width: 800px) {
   .keypad {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr) !important;
   }
 
   .secondary {
-    display: none;
-    /* Hide scientific keys on small screens for now, or we could stack them */
+    display: none !important;
   }
 
   #app {
-    max-width: 400px;
+    max-width: 400px !important;
   }
 
-  .btn {
-    aspect-ratio: 1;
-    border-radius: 50%;
-    font-size: 2rem;
-  }
-
-  .btn-zero {
-    border-radius: 40px;
+  .keypad.scientific-mode {
+    /* On mobile, scientific mode might need a different layout or just stay hidden/modal */
+    /* For now, we enforce basic layout on small screens */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
