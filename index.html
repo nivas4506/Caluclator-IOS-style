@@ -1,45 +1,83 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div id="app">
-      <div class="calculator">
-        <div class="display">
-          <span class="display-text">0</span>
-        </div>
-        <div class="keypad">
-          <button class="btn btn-gray" data-action="clear">AC</button>
-          <button class="btn btn-gray" data-action="sign">+/-</button>
-          <button class="btn btn-gray" data-action="percent">%</button>
-          <button class="btn btn-orange" data-action="operator" data-value="/">÷</button>
-          
-          <button class="btn btn-dark" data-number>7</button>
-          <button class="btn btn-dark" data-number>8</button>
-          <button class="btn btn-dark" data-number>9</button>
-          <button class="btn btn-orange" data-action="operator" data-value="*">×</button>
-          
-          <button class="btn btn-dark" data-number>4</button>
-          <button class="btn btn-dark" data-number>5</button>
-          <button class="btn btn-dark" data-number>6</button>
-          <button class="btn btn-orange" data-action="operator" data-value="-">−</button>
-          
-          <button class="btn btn-dark" data-number>1</button>
-          <button class="btn btn-dark" data-number>2</button>
-          <button class="btn btn-dark" data-number>3</button>
-          <button class="btn btn-orange" data-action="operator" data-value="+">+</button>
-          
-          <button class="btn btn-dark btn-zero" data-number>0</button>
-          <button class="btn btn-dark" data-action="decimal">.</button>
-          <button class="btn btn-orange" data-action="calculate">=</button>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="calculator">
+      <div class="display">
+        <span class="display-text">0</span>
+      </div>
+      <div class="keypad scientific-grid">
+        <!-- Row 1 -->
+        <button class="btn btn-dark secondary" data-action="open-parenthesis">(</button>
+        <button class="btn btn-dark secondary" data-action="close-parenthesis">)</button>
+        <button class="btn btn-dark secondary" data-action="memory-clear">mc</button>
+        <button class="btn btn-dark secondary" data-action="memory-add">m+</button>
+        <button class="btn btn-dark secondary" data-action="memory-minus">m-</button>
+        <button class="btn btn-dark secondary" data-action="memory-recall">mr</button>
+        <button class="btn btn-gray" data-action="clear">AC</button>
+        <button class="btn btn-gray" data-action="sign">+/-</button>
+        <button class="btn btn-gray" data-action="percent">%</button>
+        <button class="btn btn-orange" data-action="operator" data-value="/">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn btn-dark secondary" data-action="second">2nd</button>
+        <button class="btn btn-dark secondary" data-action="square">x²</button>
+        <button class="btn btn-dark secondary" data-action="cube">x³</button>
+        <button class="btn btn-dark secondary" data-action="power">xʸ</button>
+        <button class="btn btn-dark secondary" data-action="exp">eˣ</button>
+        <button class="btn btn-dark secondary" data-action="ten-power">10ˣ</button>
+        <button class="btn btn-dark" data-number>7</button>
+        <button class="btn btn-dark" data-number>8</button>
+        <button class="btn btn-dark" data-number>9</button>
+        <button class="btn btn-orange" data-action="operator" data-value="*">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn btn-dark secondary" data-action="inverse">1/x</button>
+        <button class="btn btn-dark secondary" data-action="sqrt">²√x</button>
+        <button class="btn btn-dark secondary" data-action="cbrt">³√x</button>
+        <button class="btn btn-dark secondary" data-action="root">ʸ√x</button>
+        <button class="btn btn-dark secondary" data-action="ln">ln</button>
+        <button class="btn btn-dark secondary" data-action="log">log₁₀</button>
+        <button class="btn btn-dark" data-number>4</button>
+        <button class="btn btn-dark" data-number>5</button>
+        <button class="btn btn-dark" data-number>6</button>
+        <button class="btn btn-orange" data-action="operator" data-value="-">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn btn-dark secondary" data-action="factorial">x!</button>
+        <button class="btn btn-dark secondary" data-action="sin">sin</button>
+        <button class="btn btn-dark secondary" data-action="cos">cos</button>
+        <button class="btn btn-dark secondary" data-action="tan">tan</button>
+        <button class="btn btn-dark secondary" data-action="e">e</button>
+        <button class="btn btn-dark secondary" data-action="ee">EE</button>
+        <button class="btn btn-dark" data-number>1</button>
+        <button class="btn btn-dark" data-number>2</button>
+        <button class="btn btn-dark" data-number>3</button>
+        <button class="btn btn-orange" data-action="operator" data-value="+">+</button>
+
+        <!-- Row 5 -->
+        <button class="btn btn-dark secondary" data-action="rad">Rad</button>
+        <button class="btn btn-dark secondary" data-action="sinh">sinh</button>
+        <button class="btn btn-dark secondary" data-action="cosh">cosh</button>
+        <button class="btn btn-dark secondary" data-action="tanh">tanh</button>
+        <button class="btn btn-dark secondary" data-action="pi">π</button>
+        <button class="btn btn-dark secondary" data-action="rand">Rand</button>
+        <button class="btn btn-dark btn-zero" data-number>0</button>
+        <button class="btn btn-dark" data-action="decimal">.</button>
+        <button class="btn btn-orange" data-action="calculate">=</button>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
-  </body>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>
